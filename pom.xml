@@ -6,7 +6,11 @@
 
     <groupId>org.apframework</groupId>
     <artifactId>tools-journey</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>netty</module>
+    </modules>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
