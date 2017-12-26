@@ -9,7 +9,8 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>netty</module>
+        <module>netty-sample</module>
+        <module>blade-sample</module>
     </modules>
 
     <dependencies>
