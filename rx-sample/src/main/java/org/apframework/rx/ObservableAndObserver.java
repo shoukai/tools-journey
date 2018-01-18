@@ -1,21 +1,22 @@
-package org.apframework.rx.example;
+package org.apframework.rx;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ObservableAndObserverChain {
-
+public class ObservableAndObserver {
     public static void main(String[] args) {
-        Observable.create((ObservableOnSubscribe<Integer>) emitter -> {
+        //创建一个上游 Observable：
+        Observable<Integer> observable = Observable.create(emitter -> {
             emitter.onNext(1);
             emitter.onNext(2);
             emitter.onNext(3);
             emitter.onComplete();
-        }).subscribe(new Observer<Integer>() {
+        });
+        //创建一个下游 Observer
+        Observer<Integer> observer = new Observer<Integer>() {
             @Override
             public void onSubscribe(Disposable d) {
                 log.debug("subscribe");
@@ -35,6 +36,8 @@ public class ObservableAndObserverChain {
             public void onComplete() {
                 log.debug("complete");
             }
-        });
+        };
+        //建立连接
+        observable.subscribe(observer);
     }
 }

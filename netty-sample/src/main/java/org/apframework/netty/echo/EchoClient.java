@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.apframework.netty.example.echo;
+package org.apframework.netty.echo;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;

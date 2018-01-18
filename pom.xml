@@ -12,6 +12,7 @@
         <module>netty-sample</module>
         <module>rx-sample</module>
         <module>webflux-sample</module>
+        <module>okhttp3-sample</module>
     </modules>
 
     <dependencies>

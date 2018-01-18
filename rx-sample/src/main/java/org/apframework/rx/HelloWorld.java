@@ -1,4 +1,4 @@
-package org.apframework.rx.example;
+package org.apframework.rx;
 
 import io.reactivex.Flowable;
 
