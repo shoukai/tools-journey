@@ -13,6 +13,7 @@
         <module>rx-sample</module>
         <module>webflux-sample</module>
         <module>okhttp3-sample</module>
+        <module>graphql-sample</module>
     </modules>
 
     <dependencies>
