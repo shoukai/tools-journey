@@ -1,4 +1,4 @@
-package org.apframework.okhttp3.simple;
+package org.apframework.okhttp3;
 
 /*
  * Copyright (C) 2014 Square, Inc.
