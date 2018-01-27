@@ -15,6 +15,7 @@
         <module>okhttp3-sample</module>
         <module>graphql-sample</module>
         <module>restql-sample</module>
+        <module>blade-sample</module>
     </modules>
 
     <dependencies>
