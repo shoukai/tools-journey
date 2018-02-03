@@ -7,15 +7,15 @@
 版本4.1，[参考](http://netty.io/wiki/)
 
 * Fundamental
-    * Echo ‐ the very basic client and server
-    * Discard ‐ see how to send an infinite data stream asynchronously without flooding the write buffer
-    * Uptime ‐ implement automatic reconnection mechanism
+    * **Echo** ‐ the very basic client and server
+    * **Discard** ‐ see how to send an infinite data stream asynchronously without flooding the write buffer
+    * **Uptime** ‐ implement automatic reconnection mechanism
 * Text protocols
-    * Telnet ‐ a classic line-based network application
+    * **Telnet** ‐ a classic line-based network application
     * Quote of the Moment ‐ broadcast a UDP/IP packet
     * SecureChat ‐ an TLS-based chat server, derived from the Telnet example
 * Binary protocols
-    * ObjectEcho ‐ exchange serializable Java objects
+    * **ObjectEcho** ‐ exchange serializable Java objects
     * Factorial ‐ write a stateful client and server with a custom binary protocol
     * WorldClock ‐ rapid protocol protyping with Google Protocol Buffers integration
 * HTTP
@@ -32,3 +32,8 @@
     * Message flow ‐ use UDT in UDP-like message delivery mode
     * Byte streams in symmetric peer-to-peer rendezvous connect mode
     * Message flow in symmetric peer-to-peer rendezvous connect mode
+
+### 扩展阅读：
+* [跨域资源共享 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)
+
+
