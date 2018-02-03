@@ -20,7 +20,7 @@ public class WebSocketConfiguration {
     @Bean
     public HandlerMapping webSocketMapping(final EchoHandler echoHandler) {
         final Map<String, WebSocketHandler> map = new HashMap<>(1);
-        map.put("/echo", echoHandler);
+        map.put("/objectecho", echoHandler);
 
         final SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
         mapping.setOrder(Ordered.HIGHEST_PRECEDENCE);

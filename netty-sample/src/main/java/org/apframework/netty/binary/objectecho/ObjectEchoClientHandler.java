@@ -13,39 +13,42 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.apframework.netty.fundamental.echo;
+package org.apframework.netty.binary.objectecho;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
-/**
- * Handler implementation for the objectecho client.  It initiates the ping-pong
- * traffic between the objectecho client and server by sending the first message to
- * the server.
- */
-public class EchoClientHandler extends ChannelInboundHandlerAdapter {
+import java.util.ArrayList;
+import java.util.List;
 
-    private final ByteBuf firstMessage;
+/**
+ * Handler implementation for the object echo client.  It initiates the
+ * ping-pong traffic between the object echo client and server by sending the
+ * first message to the server.
+ */
+public class ObjectEchoClientHandler extends ChannelInboundHandlerAdapter {
+
+    private final List<Integer> firstMessage;
 
     /**
      * Creates a client-side handler.
      */
-    public EchoClientHandler() {
-        firstMessage = Unpooled.buffer(EchoClient.SIZE);
-        for (int i = 0; i < firstMessage.capacity(); i++) {
-            firstMessage.writeByte((byte) i);
+    public ObjectEchoClientHandler() {
+        firstMessage = new ArrayList<>(ObjectEchoClient.SIZE);
+        for (int i = 0; i < ObjectEchoClient.SIZE; i ++) {
+            firstMessage.add(Integer.valueOf(i));
         }
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
+        // Send the first message if this handler is a client-side handler.
         ctx.writeAndFlush(firstMessage);
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
+        // Echo back the received object to the server.
         ctx.write(msg);
     }
 
@@ -56,7 +59,6 @@ public class EchoClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-        // Close the connection when an exception is raised.
         cause.printStackTrace();
         ctx.close();
     }

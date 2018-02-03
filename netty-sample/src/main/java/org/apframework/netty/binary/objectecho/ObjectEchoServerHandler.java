@@ -13,21 +13,26 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.apframework.netty.text_protocols.telnet;
+package org.apframework.netty.binary.objectecho;
 
-import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
 /**
- * Handles a client-side channel.
+ * Handles both client-side and server-side handler depending on which
+ * constructor was called.
  */
-@Sharable
-public class TelnetClientHandler extends SimpleChannelInboundHandler<String> {
+public class ObjectEchoServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String msg) {
-        System.err.println(msg);
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+        // Echo back the received object to the client.
+        ctx.write(msg);
+    }
+
+    @Override
+    public void channelReadComplete(ChannelHandlerContext ctx) {
+        ctx.flush();
     }
 
     @Override
