@@ -21,9 +21,9 @@
 * HTTP
     * Snoop ‐ build your own extremely light-weight HTTP client and server
     * File server ‐ asynchronous large file streaming in HTTP
-    * Web Sockets (Client & Server) ‐ add a two-way full-duplex communication channel to HTTP using Web Sockets
+    * **Web Sockets** (Client & Server) ‐ add a two-way full-duplex communication channel to HTTP using Web Sockets
     * SPDY (Client & Server) ‐ implement SPDY protocol
-    * CORS demo ‐ implement cross-origin resource sharing
+    * **CORS demo** ‐ implement cross-origin resource sharing
 * Advanced
     * Proxy server ‐ write a highly efficient tunneling proxy server
     * Port unification ‐ run services with different protocols on a single TCP/IP port
@@ -35,5 +35,5 @@
 
 ### 扩展阅读：
 * [跨域资源共享 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)
-
-
+* [快速使用 netty 轻松打造一个 websocket 服务](https://mengkang.net/777.html)
+* [带你玩转Netty之原理篇](https://juejin.im/entry/59cc618b5188256fbc027fa6)
