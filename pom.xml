@@ -16,6 +16,7 @@
         <module>graphql-sample</module>
         <module>restql-sample</module>
         <module>blade-sample</module>
+        <module>hystrix-sample</module>
     </modules>
 
     <dependencies>
