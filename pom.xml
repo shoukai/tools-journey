@@ -17,6 +17,7 @@
         <module>restql-sample</module>
         <module>blade-sample</module>
         <module>hystrix-sample</module>
+        <module>spring-data-sample</module>
     </modules>
 
     <dependencies>
