@@ -18,6 +18,7 @@
         <module>blade-sample</module>
         <module>hystrix-sample</module>
         <module>spring-data-sample</module>
+        <module>vertx-sample</module>
     </modules>
 
     <dependencies>
