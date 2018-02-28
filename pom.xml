@@ -20,6 +20,7 @@
         <module>spring-data-sample</module>
         <module>vertx-sample</module>
         <module>hazelcast-sample</module>
+        <module>ignite-sample</module>
     </modules>
 
     <dependencies>
