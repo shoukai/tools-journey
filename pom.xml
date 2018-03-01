@@ -21,6 +21,7 @@
         <module>vertx-sample</module>
         <module>hazelcast-sample</module>
         <module>ignite-sample</module>
+        <module>mapdb-sample</module>
     </modules>
 
     <dependencies>
