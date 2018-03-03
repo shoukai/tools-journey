@@ -5,7 +5,7 @@ import org.mapdb.DBMaker;
 
 import java.util.concurrent.ConcurrentMap;
 
-public class HelloMapDB {
+public class HelloMapMemoryDB {
 
     public static void main(String[] args) {
         DB db = DBMaker.memoryDB().make();

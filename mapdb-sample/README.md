@@ -15,7 +15,7 @@ MapDB combines embedded database engine and Java collections. It is free under A
 
 ### 参考
 
-* [home](http://www.mapdb.org)
-* [github](https://github.com/jankotek/mapdb/)
-
+* [Home Page](http://www.mapdb.org)
+* [Project Github](https://github.com/jankotek/mapdb/)
+* [Project GitBook](https://jankotek.gitbooks.io/mapdb/content/quick-start/)
 

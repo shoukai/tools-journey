@@ -31,3 +31,5 @@ log/
 target/
 
 logs/*.log
+
+*.tmpfile
