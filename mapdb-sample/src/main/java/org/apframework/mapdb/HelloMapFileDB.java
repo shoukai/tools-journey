@@ -16,9 +16,7 @@ public class HelloMapFileDB {
                 .hashMap("map", Serializer.STRING, Serializer.LONG)
                 .createOrOpen();
         map.put("something", 111L);
-
         System.out.println(map.get("something"));
-
         db.close();
     }
 }

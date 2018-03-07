@@ -22,6 +22,8 @@
         <module>hazelcast-sample</module>
         <module>ignite-sample</module>
         <module>mapdb-sample</module>
+        <module>fast-serialization-sample</module>
+        <module>httpclient-sample</module>
     </modules>
 
     <dependencies>
