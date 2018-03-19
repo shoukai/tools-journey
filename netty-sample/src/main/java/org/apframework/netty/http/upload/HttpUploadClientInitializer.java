@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.apframework.netty.http.snoop;
+package org.apframework.netty.http.upload;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -23,32 +23,30 @@ import io.netty.handler.codec.http.HttpContentDecompressor;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.stream.ChunkedWriteHandler;
 
-public class HttpSnoopClientInitializer extends ChannelInitializer<SocketChannel> {
+public class HttpUploadClientInitializer extends ChannelInitializer<SocketChannel> {
 
     private final SslContext sslCtx;
 
-    public HttpSnoopClientInitializer(SslContext sslCtx) {
+    public HttpUploadClientInitializer(SslContext sslCtx) {
         this.sslCtx = sslCtx;
     }
 
     @Override
     public void initChannel(SocketChannel ch) {
-        ChannelPipeline p = ch.pipeline();
+        ChannelPipeline pipeline = ch.pipeline();
 
-        // Enable HTTPS if necessary.
         if (sslCtx != null) {
-            p.addLast(sslCtx.newHandler(ch.alloc()));
+            pipeline.addLast("ssl", sslCtx.newHandler(ch.alloc()));
         }
 
-        p.addLast(new HttpClientCodec());
+        pipeline.addLast("codec", new HttpClientCodec());
 
         // Remove the following line if you don't want automatic content decompression.
-        p.addLast(new HttpContentDecompressor());
+        pipeline.addLast("inflater", new HttpContentDecompressor());
 
-        // Uncomment the following line if you don't want to handle HttpContents.
-        //p.addLast(new HttpObjectAggregator(1048576));
-        p.addLast(new ChunkedWriteHandler());
+        // to be used since huge file transfer
+        pipeline.addLast("chunkedWriter", new ChunkedWriteHandler());
 
-        p.addLast(new HttpSnoopClientHandler());
+        pipeline.addLast("handler", new HttpUploadClientHandler());
     }
 }

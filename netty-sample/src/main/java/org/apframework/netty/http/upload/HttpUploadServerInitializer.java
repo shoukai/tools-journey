@@ -13,42 +13,38 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.apframework.netty.http.snoop;
+package org.apframework.netty.http.upload;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.http.HttpClientCodec;
-import io.netty.handler.codec.http.HttpContentDecompressor;
+import io.netty.handler.codec.http.HttpContentCompressor;
+import io.netty.handler.codec.http.HttpRequestDecoder;
+import io.netty.handler.codec.http.HttpResponseEncoder;
 import io.netty.handler.ssl.SslContext;
-import io.netty.handler.stream.ChunkedWriteHandler;
 
-public class HttpSnoopClientInitializer extends ChannelInitializer<SocketChannel> {
+public class HttpUploadServerInitializer extends ChannelInitializer<SocketChannel> {
 
     private final SslContext sslCtx;
 
-    public HttpSnoopClientInitializer(SslContext sslCtx) {
+    public HttpUploadServerInitializer(SslContext sslCtx) {
         this.sslCtx = sslCtx;
     }
 
     @Override
     public void initChannel(SocketChannel ch) {
-        ChannelPipeline p = ch.pipeline();
+        ChannelPipeline pipeline = ch.pipeline();
 
-        // Enable HTTPS if necessary.
         if (sslCtx != null) {
-            p.addLast(sslCtx.newHandler(ch.alloc()));
+            pipeline.addLast(sslCtx.newHandler(ch.alloc()));
         }
 
-        p.addLast(new HttpClientCodec());
+        pipeline.addLast(new HttpRequestDecoder());
+        pipeline.addLast(new HttpResponseEncoder());
 
-        // Remove the following line if you don't want automatic content decompression.
-        p.addLast(new HttpContentDecompressor());
+        // Remove the following line if you don't want automatic content compression.
+        pipeline.addLast(new HttpContentCompressor());
 
-        // Uncomment the following line if you don't want to handle HttpContents.
-        //p.addLast(new HttpObjectAggregator(1048576));
-        p.addLast(new ChunkedWriteHandler());
-
-        p.addLast(new HttpSnoopClientHandler());
+        pipeline.addLast(new HttpUploadServerHandler());
     }
 }

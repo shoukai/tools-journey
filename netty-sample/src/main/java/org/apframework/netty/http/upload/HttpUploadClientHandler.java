@@ -13,14 +13,23 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.apframework.netty.http.snoop;
+package org.apframework.netty.http.upload;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.handler.codec.http.*;
+import io.netty.handler.codec.http.HttpContent;
+import io.netty.handler.codec.http.HttpUtil;
+import io.netty.handler.codec.http.HttpObject;
+import io.netty.handler.codec.http.HttpResponse;
+import io.netty.handler.codec.http.LastHttpContent;
 import io.netty.util.CharsetUtil;
 
-public class HttpSnoopClientHandler extends SimpleChannelInboundHandler<HttpObject> {
+/**
+ * Handler that just dumps the contents of the response from the server
+ */
+public class HttpUploadClientHandler extends SimpleChannelInboundHandler<HttpObject> {
+
+    private boolean readingChunks;
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, HttpObject msg) {
@@ -29,7 +38,6 @@ public class HttpSnoopClientHandler extends SimpleChannelInboundHandler<HttpObje
 
             System.err.println("STATUS: " + response.status());
             System.err.println("VERSION: " + response.protocolVersion());
-            System.err.println();
 
             if (!response.headers().isEmpty()) {
                 for (CharSequence name : response.headers().names()) {
@@ -37,32 +45,35 @@ public class HttpSnoopClientHandler extends SimpleChannelInboundHandler<HttpObje
                         System.err.println("HEADER: " + name + " = " + value);
                     }
                 }
-                System.err.println();
             }
 
-            if (HttpUtil.isTransferEncodingChunked(response)) {
+            if (response.status().code() == 200 && HttpUtil.isTransferEncodingChunked(response)) {
+                readingChunks = true;
                 System.err.println("CHUNKED CONTENT {");
             } else {
                 System.err.println("CONTENT {");
             }
         }
         if (msg instanceof HttpContent) {
-            HttpContent content = (HttpContent) msg;
+            HttpContent chunk = (HttpContent) msg;
+            System.err.println(chunk.content().toString(CharsetUtil.UTF_8));
 
-            System.out.print(content.content().toString(CharsetUtil.UTF_8));
-
-            if (content instanceof LastHttpContent) {
-                System.err.println("} END OF CONTENT");
-                ctx.close();
+            if (chunk instanceof LastHttpContent) {
+                if (readingChunks) {
+                    System.err.println("} END OF CHUNKED CONTENT");
+                } else {
+                    System.err.println("} END OF CONTENT");
+                }
+                readingChunks = false;
+            } else {
+                System.err.println(chunk.content().toString(CharsetUtil.UTF_8));
             }
-
-
         }
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         cause.printStackTrace();
-        ctx.close();
+        ctx.channel().close();
     }
 }
