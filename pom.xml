@@ -19,6 +19,7 @@
         <module>hystrix-sample</module>
         <module>spring-data-sample</module>
         <module>vertx-sample</module>
+        <module>spring-data-solr-sample</module>
     </modules>
 
     <dependencies>
