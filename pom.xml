@@ -22,7 +22,7 @@
         <module>spring-data-solr-sample</module>
         <module>netty-socketio-sample</module>
         <!--<module>cucumber-sample</module>-->
-        <!--<module>fluency-sample</module>-->
+        <module>fluency-sample</module>
     </modules>
 
     <dependencies>
