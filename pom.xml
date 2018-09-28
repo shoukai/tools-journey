@@ -20,8 +20,8 @@
         <module>spring-data-sample</module>
         <module>vertx-sample</module>
         <module>spring-data-solr-sample</module>
+        <module>spring-statemachine-sample</module>
         <module>netty-socketio-sample</module>
-        <!--<module>cucumber-sample</module>-->
         <module>fluency-sample</module>
     </modules>
 
