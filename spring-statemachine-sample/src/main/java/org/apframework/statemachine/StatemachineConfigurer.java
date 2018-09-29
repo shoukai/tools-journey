@@ -3,13 +3,9 @@ package org.apframework.statemachine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.action.Action;
-import org.springframework.statemachine.annotation.OnTransition;
-import org.springframework.statemachine.annotation.WithStateMachine;
 import org.springframework.statemachine.config.EnableStateMachine;
 import org.springframework.statemachine.config.EnumStateMachineConfigurerAdapter;
-import org.springframework.statemachine.config.StateMachineBuilder;
 import org.springframework.statemachine.config.builders.StateMachineConfigurationConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
@@ -24,54 +20,54 @@ import java.util.EnumSet;
  */
 @Configuration
 @EnableStateMachine
-public class StatemachineConfigurer extends EnumStateMachineConfigurerAdapter<BizStates, BizEvents> {
+public class StatemachineConfigurer extends EnumStateMachineConfigurerAdapter<TurnstileStates, TurnstileEvents> {
 
     @Autowired
     private BizStateMachinePersist bizStateMachinePersist;
 
     @Bean
-    public StateMachinePersister<BizStates, BizEvents, Integer> stateMachinePersist() {
+    public StateMachinePersister<TurnstileStates, TurnstileEvents, Integer> stateMachinePersist() {
         return new DefaultStateMachinePersister<>(bizStateMachinePersist);
     }
 
     @Override
-    public void configure(StateMachineStateConfigurer<BizStates, BizEvents> states)
+    public void configure(StateMachineStateConfigurer<TurnstileStates, TurnstileEvents> states)
             throws Exception {
         states
                 .withStates()
-                .initial(BizStates.STATE1)
-                .states(EnumSet.allOf(BizStates.class));
+                // 初识状态：Locked
+                .initial(TurnstileStates.Locked)
+                .states(EnumSet.allOf(TurnstileStates.class));
     }
 
     @Override
-    public void configure(StateMachineTransitionConfigurer<BizStates, BizEvents> transitions)
+    public void configure(StateMachineTransitionConfigurer<TurnstileStates, TurnstileEvents> transitions)
             throws Exception {
         transitions
                 .withExternal()
-                .source(BizStates.STATE1).target(BizStates.STATE2)
-                .event(BizEvents.EVENT1).action(processEvent1())
+                .source(TurnstileStates.Unlocked).target(TurnstileStates.Locked)
+                .event(TurnstileEvents.COIN).action(customerPassAndLock())
                 .and()
                 .withExternal()
-                .source(BizStates.STATE2).target(BizStates.STATE1)
-                .event(BizEvents.EVENT2).action(processEvent2())
+                .source(TurnstileStates.Locked).target(TurnstileStates.Unlocked)
+                .event(TurnstileEvents.PUSH).action(turnstileUnlock())
         ;
     }
 
     @Override
-    public void configure(StateMachineConfigurationConfigurer<BizStates, BizEvents> config)
+    public void configure(StateMachineConfigurationConfigurer<TurnstileStates, TurnstileEvents> config)
             throws Exception {
         config.withConfiguration()
-                .machineId("bizMachine")
+                .machineId("turnstileStateMachine")
         ;
     }
 
-
-
-    public static Action<BizStates, BizEvents> processEvent1() {
-        return context -> System.out.println("event 1, context:" + context);
+    public Action<TurnstileStates, TurnstileEvents> turnstileUnlock() {
+        return context -> System.out.println("解锁旋转门，以便游客能够通过，当前状态机上下文：" + context);
     }
 
-    public static Action<BizStates, BizEvents> processEvent2() {
-        return context -> System.out.println("event 2, context:" + context);
+    public Action<TurnstileStates, TurnstileEvents> customerPassAndLock() {
+        return context -> System.out.println("当游客通过，锁定旋转门，当前状态机上下文：" + context);
     }
+
 }
