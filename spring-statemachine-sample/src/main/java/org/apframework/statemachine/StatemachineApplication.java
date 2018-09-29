@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.statemachine.StateMachine;
-import org.springframework.statemachine.persist.DefaultStateMachinePersister;
-import org.springframework.statemachine.persist.StateMachinePersister;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author: Shoukai Huang
@@ -17,10 +16,7 @@ import org.springframework.statemachine.persist.StateMachinePersister;
 public class StatemachineApplication implements CommandLineRunner {
 
     @Autowired
-    private StateMachine<TurnstileStates, TurnstileEvents> stateMachine;
-
-    @Autowired
-    private StateMachinePersister stateMachinePersist;
+    private StatemachineService statemachineService;
 
     public static void main(String[] args) {
         SpringApplication.run(StatemachineApplication.class, args);
@@ -29,29 +25,13 @@ public class StatemachineApplication implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
-        stateMachine.start();
+        Map<String, Object> context = new HashMap<>(16);
+        context.put("context", "some code");
+        statemachineService.execute(1, TurnstileEvents.PUSH, context);
+        statemachineService.execute(1, TurnstileEvents.PUSH, context);
+        statemachineService.execute(1, TurnstileEvents.COIN, context);
+        statemachineService.execute(1, TurnstileEvents.COIN, context);
 
-        stateMachinePersist.restore(stateMachine, 1);
-        System.out.println("--- push ---");
-        stateMachine.sendEvent(TurnstileEvents.PUSH);
-        stateMachinePersist.persist(stateMachine, 1);
-
-        stateMachinePersist.restore(stateMachine, 1);
-        System.out.println("--- push ---");
-        stateMachine.sendEvent(TurnstileEvents.PUSH);
-        stateMachinePersist.persist(stateMachine, 1);
-
-        stateMachinePersist.restore(stateMachine, 1);
-        System.out.println("--- coin ---");
-        stateMachine.sendEvent(TurnstileEvents.COIN);
-        stateMachinePersist.persist(stateMachine, 1);
-
-        stateMachinePersist.restore(stateMachine, 1);
-        System.out.println("--- coin ---");
-        stateMachine.sendEvent(TurnstileEvents.COIN);
-        stateMachinePersist.persist(stateMachine, 1);
-
-        stateMachine.stop();
     }
 
 }
