@@ -23,6 +23,7 @@
         <module>spring-statemachine-sample</module>
         <module>netty-socketio-sample</module>
         <module>fluency-sample</module>
+        <module>jexl-sample</module>
     </modules>
 
     <dependencies>
