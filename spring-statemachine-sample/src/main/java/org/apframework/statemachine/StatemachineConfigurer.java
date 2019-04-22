@@ -46,11 +46,11 @@ public class StatemachineConfigurer extends EnumStateMachineConfigurerAdapter<Tu
         transitions
                 .withExternal()
                 .source(TurnstileStates.Unlocked).target(TurnstileStates.Locked)
-                .event(TurnstileEvents.COIN).action(customerPassAndLock())
+                .event(TurnstileEvents.PUSH).action(customerPassAndLock())
                 .and()
                 .withExternal()
                 .source(TurnstileStates.Locked).target(TurnstileStates.Unlocked)
-                .event(TurnstileEvents.PUSH).action(turnstileUnlock())
+                .event(TurnstileEvents.COIN).action(turnstileUnlock())
         ;
     }
 
