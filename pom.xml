@@ -24,6 +24,7 @@
         <module>netty-socketio-sample</module>
         <module>fluency-sample</module>
         <module>jexl-sample</module>
+        <module>javassist-sample</module>
     </modules>
 
     <dependencies>
