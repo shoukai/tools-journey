@@ -25,6 +25,7 @@
         <module>fluency-sample</module>
         <module>jexl-sample</module>
         <module>javassist-sample</module>
+        <module>akka-samples</module>
     </modules>
 
     <dependencies>
