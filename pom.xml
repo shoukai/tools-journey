@@ -26,6 +26,7 @@
         <module>jexl-sample</module>
         <module>javassist-sample</module>
         <module>akka-samples</module>
+        <module>reactor-sample</module>
     </modules>
 
     <dependencies>
