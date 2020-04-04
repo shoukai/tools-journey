@@ -28,7 +28,6 @@
         <module>akka-samples</module>
         <module>reactor-sample</module>
         <module>drools-samples</module>
-        <module>drools-samples/drools-simple-sample</module>
     </modules>
 
     <dependencies>
