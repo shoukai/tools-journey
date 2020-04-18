@@ -9,6 +9,7 @@
 * [restql 示例](/restql-sample/README.md)
 * [rxJava 示例](/rx-sample/README.md)
 * [blade 示例](/blade-sample/README.md) 
+* [jsonrpc4j 示例](/jsonrpc4j-sample/README.md)
 
 待整理资源
 
