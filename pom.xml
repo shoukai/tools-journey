@@ -31,6 +31,7 @@
         <module>drools-samples</module>
         <module>unirest-java-sample</module>
         <module>jsonrpc4j-sample</module>
+        <module>dozer-sample</module>
     </modules>
 
     <dependencies>
