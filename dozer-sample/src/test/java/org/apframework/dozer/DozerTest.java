@@ -60,4 +60,14 @@ public class DozerTest {
         Assert.assertEquals(model.getInner().getInnerA(), data.getInner().getInnerA());
         Assert.assertEquals(model.getInner().getInnerB(), data.getInner().getInnerB());
     }
+
+    @Test
+    public void testAnnotation() {
+        Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+        AnnotationSourceBean source = new AnnotationSourceBean(1L, "Dozer", "2017-08-10");
+        AnnotationTargetBean target = mapper.map(source, AnnotationTargetBean.class);
+        Assert.assertEquals(source.getData(), target.getBinaryData());
+        Assert.assertEquals(String.valueOf(source.getId()), target.getPk());
+        Assert.assertEquals(source.getName(), target.getName());
+    }
 }
