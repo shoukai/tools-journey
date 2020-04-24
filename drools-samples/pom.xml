@@ -14,6 +14,7 @@
 
     <modules>
         <module>drools-simple-sample</module>
+        <module>spring-boot-drools</module>
     </modules>
 
 </project>
