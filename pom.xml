@@ -32,6 +32,7 @@
         <module>unirest-java-sample</module>
         <module>jsonrpc4j-sample</module>
         <module>dozer-sample</module>
+        <module>redis-mock-sample</module>
     </modules>
 
     <dependencies>
