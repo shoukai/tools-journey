@@ -19,9 +19,9 @@ import java.io.IOException;
 
 @Configuration
 public class DroolsAutoConfiguration {
-    
+
     private static final String RULES_PATH = "rules/";
-    
+
     @Bean
     @ConditionalOnMissingBean(KieFileSystem.class)
     public KieFileSystem kieFileSystem() throws IOException {
@@ -36,36 +36,36 @@ public class DroolsAutoConfiguration {
         ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
         return resourcePatternResolver.getResources("classpath*:" + RULES_PATH + "**/*.*");
     }
-    
+
     @Bean
     @ConditionalOnMissingBean(KieContainer.class)
     public KieContainer kieContainer() throws IOException {
         final KieRepository kieRepository = getKieServices().getRepository();
-        
+
         kieRepository.addKieModule(new KieModule() {
             public ReleaseId getReleaseId() {
                 return kieRepository.getDefaultReleaseId();
             }
         });
-        
+
         KieBuilder kieBuilder = getKieServices().newKieBuilder(kieFileSystem());
         kieBuilder.buildAll();
 
-        KieContainer kieContainer=getKieServices().newKieContainer(kieRepository.getDefaultReleaseId());
+        KieContainer kieContainer = getKieServices().newKieContainer(kieRepository.getDefaultReleaseId());
 
         return kieContainer;
     }
-    
+
     private KieServices getKieServices() {
         return KieServices.Factory.get();
     }
-    
+
     @Bean
     @ConditionalOnMissingBean(KieBase.class)
     public KieBase kieBase() throws IOException {
         return kieContainer().getKieBase();
     }
-    
+
     @Bean
     @ConditionalOnMissingBean(KieSession.class)
     public KieSession kieSession() throws IOException {

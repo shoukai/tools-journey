@@ -20,9 +20,11 @@ public class TestController {
 
     @ResponseBody
     @RequestMapping("/address")
-    public void test(int num){
+    public String test(int num) {
         Address address = new Address();
-        address.setPostcode(generateRandom(num));
+        String postCode = generateRandom(num);
+        System.out.println("post code : " + postCode);
+        address.setPostcode(postCode);
         KieSession kieSession = kieContainer.newKieSession();
 
         AddressCheckResult result = new AddressCheckResult();
@@ -32,23 +34,26 @@ public class TestController {
         kieSession.destroy();
         System.out.println("触发了" + ruleFiredCount + "条规则");
 
-        if(result.isPostCodeResult()){
+        if (result.isPostCodeResult()) {
             System.out.println("规则校验通过");
         }
+
+        return postCode + "触发了" + ruleFiredCount + "条规则";
 
     }
 
     /**
      * 生成随机数
+     *
      * @param num
      * @return
      */
     public String generateRandom(int num) {
         String chars = "0123456789";
-        StringBuffer number=new StringBuffer();
+        StringBuffer number = new StringBuffer();
         for (int i = 0; i < num; i++) {
             int rand = (int) (Math.random() * 10);
-            number=number.append(chars.charAt(rand));
+            number = number.append(chars.charAt(rand));
         }
         return number.toString();
     }
