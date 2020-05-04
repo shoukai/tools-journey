@@ -33,6 +33,7 @@
         <module>jsonrpc4j-sample</module>
         <module>dozer-sample</module>
         <module>redis-mock-sample</module>
+        <module>hutool-sample</module>
     </modules>
 
     <dependencies>
