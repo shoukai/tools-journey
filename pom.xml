@@ -34,6 +34,7 @@
         <module>dozer-sample</module>
         <module>redis-mock-sample</module>
         <module>hutool-sample</module>
+        <module>guava-sample</module>
     </modules>
 
     <dependencies>
