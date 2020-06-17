@@ -71,9 +71,23 @@ public boolean tryAcquire(long timeout, TimeUnit unit);
 public boolean tryAcquire(int permits, long timeout, TimeUnit unit);
 ```
 
+## 布隆过滤器
+
+Bloom Filter是一种空间效率很高的随机数据结构，它利用位数组很简洁地表示一个集合，并能判断一个元素是否属于这个集合。Bloom Filter的这种高效是有一定代价的：在判断一个元素是否属于某个集合时，有可能会把不属于这个集合的元素误认为属于这个集合(false positive)。因此，Bloom Filter不适合那些“零错误”的应用场合。而在能容忍低错误率的应用场合下，Bloom Filter通过极少的错误换取了存储空间的极大节省。
+
+>A Bloom filter is a space-efficient probabilistic data structure, conceived by Burton Howard Bloom in 1970, that is used to test whether an element is a member of a set. False positive matches are possible, but false negatives are not, thus a Bloom filter has a 100% recall rate. In other words, a query returns either “possibly in set” or “definitely not in set”.
+
+上述描述引自维基百科，特点总结为如下：
+
+* 空间效率高的概率型数据结构，用来检查一个元素是否在一个集合中。
+* 对于一个元素检测是否存在的调用，BloomFilter会告诉调用者两个结果之一：可能存在或者一定不存在。
+ 布隆过滤器的使用场景很多，除了上文说的网络爬虫，还有处理缓存击穿和避免磁盘读取等。Goole Bigtable，Apache HBase和Postgresql等都使用了布隆过滤器。
 
 
 # 参考
 
 * [RateLimiter](http://xiaobaoqiu.github.io/blog/2015/07/02/ratelimiter/)
 * [RateLimiter解析(一) ——设计哲学与快速使用](https://tech.kujiale.com/ratelimiter-architecture/)
+* [BloomFilter布隆过滤器使用](https://blog.csdn.net/tianyaleixiaowu/article/details/74739827)
+* [Guava的布隆过滤器](https://www.jianshu.com/p/2e815cf301c5)
+
