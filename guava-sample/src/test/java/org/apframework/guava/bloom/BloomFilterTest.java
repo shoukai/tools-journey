@@ -1,4 +1,4 @@
-package org.apframework.guava.limiter;
+package org.apframework.guava.bloom;
 
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
