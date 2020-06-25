@@ -11,6 +11,9 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import lombok.Data;
 
+/**
+ * https://www.yiibai.com/guava/guava_caching_utilities.html
+ */
 public class CacheTest {
 
     public static void main(String args[]) {
