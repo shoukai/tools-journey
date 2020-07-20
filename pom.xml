@@ -35,6 +35,7 @@
         <module>redis-mock-sample</module>
         <module>hutool-sample</module>
         <module>guava-sample</module>
+        <module>siddhi-sample</module>
     </modules>
 
     <dependencies>
