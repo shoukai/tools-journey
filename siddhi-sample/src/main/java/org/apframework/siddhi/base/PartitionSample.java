@@ -1,4 +1,4 @@
-package org.apframework.siddhi;
+package org.apframework.siddhi.base;
 
 
 import io.siddhi.core.SiddhiAppRuntime;

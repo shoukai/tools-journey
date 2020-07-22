@@ -1,4 +1,4 @@
-package org.apframework.siddhi.util;
+package org.apframework.siddhi.base.util;
 
 import io.siddhi.core.config.SiddhiQueryContext;
 import io.siddhi.core.exception.SiddhiAppCreationException;

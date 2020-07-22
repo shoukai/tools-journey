@@ -1,4 +1,4 @@
-package org.apframework.siddhi;
+package org.apframework.siddhi.base;
 
 import io.siddhi.core.SiddhiAppRuntime;
 import io.siddhi.core.SiddhiManager;
@@ -6,7 +6,7 @@ import io.siddhi.core.event.Event;
 import io.siddhi.core.query.output.callback.QueryCallback;
 import io.siddhi.core.stream.input.InputHandler;
 import io.siddhi.core.util.EventPrinter;
-import org.apframework.siddhi.util.CustomFunctionExtension;
+import org.apframework.siddhi.base.util.CustomFunctionExtension;
 
 /**
  * The sample demonstrate how to use custom UDFs in Siddhi within another Java program.
