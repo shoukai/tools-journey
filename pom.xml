@@ -36,6 +36,7 @@
         <module>hutool-sample</module>
         <module>guava-sample</module>
         <module>siddhi-sample</module>
+        <module>spring-webflow-samples</module>
     </modules>
 
     <dependencies>
