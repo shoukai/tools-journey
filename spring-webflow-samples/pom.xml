@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>webflow-showcase</module>
+        <module>booking-mvc</module>
     </modules>
 
     <artifactId>spring-webflow-samples</artifactId>
