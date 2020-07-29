@@ -12,6 +12,7 @@
     <modules>
         <module>webflow-showcase</module>
         <module>booking-mvc</module>
+        <module>primefaces-showcase</module>
     </modules>
 
     <artifactId>spring-webflow-samples</artifactId>
