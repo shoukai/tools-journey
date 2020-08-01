@@ -37,6 +37,7 @@
         <module>guava-sample</module>
         <module>siddhi-sample</module>
         <module>spring-webflow-samples</module>
+        <module>apache-commons-samples</module>
     </modules>
 
     <dependencies>
