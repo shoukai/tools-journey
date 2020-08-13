@@ -9,25 +9,26 @@ import io.rsocket.transport.netty.server.TcpServerTransport;
 import io.rsocket.util.DefaultPayload;
 import reactor.core.publisher.Mono;
 
+
 /**
  * https://developer.ibm.com/zh/technologies/reactive-systems/articles/j-using-rsocket-for-reactive-data-transfer/
  *
- * 请求-响应流模式
- * 请求-响应流模式的用法与请求-响应模式很相似。代码清单 3 给出了请求-响应流模式的示例。
- * 服务器端的 AbstractRSocket 类的实现覆写了 requestStream() 方法。
- * 对于每个请求的 Payload 对象，都需要返回一个表示响应流的 Flux<Payload> 对象。
- * 这里的实现逻辑是把请求数据的字符串变成包含单个字符的流。
- * 客户端的 RSocket 对象使用 requestStream() 来发送请求，得到的是 Flux<Payload> 对象。
+ * 发后不管模式
+ * 发后不管模式的用法和之前的两种模式也是相似的。在代码清单 4 中，
+ * AbstractRSocket 类的实现覆写了 fireAndForget() 方法，对于请求的 Payload 对象，
+ * 只需要返回 Mono<Void> 对象即可。客户端 RSocket 对象使用 fireAndForget() 方法发送请求。
+ * 在发后不管模式中，由于发送方不需要等待接收方的响应，因此当程序结束时，服务器端并不一定接收到了请求。
  */
-public class RequestResponseExample {
+public class FireAndForgetExample {
 
     public static void main(String[] args) {
         RSocketFactory.receive()
                 .acceptor(((setup, sendingSocket) -> Mono.just(
                         new AbstractRSocket() {
                             @Override
-                            public Mono<Payload> requestResponse(Payload payload) {
-                                return Mono.just(DefaultPayload.create("ECHO >> " + payload.getDataUtf8()));
+                            public Mono<Void> fireAndForget(Payload payload) {
+                                System.out.println("Receive: " + payload.getDataUtf8());
+                                return Mono.empty();
                             }
                         }
                 )))
@@ -40,10 +41,8 @@ public class RequestResponseExample {
                 .start()
                 .block();
 
-        socket.requestResponse(DefaultPayload.create("hello"))
-                .map(Payload::getDataUtf8)
-                .doOnNext(System.out::println)
-                .block();
+        socket.fireAndForget(DefaultPayload.create("hello")).block();
+        socket.fireAndForget(DefaultPayload.create("world")).block();
 
         socket.dispose();
     }
