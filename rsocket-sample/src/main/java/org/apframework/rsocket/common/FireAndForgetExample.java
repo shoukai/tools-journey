@@ -1,4 +1,4 @@
-package org.apframework.rsocket;
+package org.apframework.rsocket.common;
 
 import io.rsocket.AbstractRSocket;
 import io.rsocket.Payload;
