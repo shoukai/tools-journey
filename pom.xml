@@ -39,6 +39,7 @@
         <module>spring-webflow-samples</module>
         <module>apache-commons-samples</module>
         <module>rsocket-sample</module>
+        <module>caffeine-sample</module>
     </modules>
 
     <dependencies>
