@@ -41,6 +41,7 @@ public class CommandHelloWorld extends HystrixCommand<String> {
 
     @Override
     protected String run() {
+        System.out.println(name + " already run ");
         return "Hello " + name + "!";
     }
 
@@ -70,58 +71,13 @@ public class CommandHelloWorld extends HystrixCommand<String> {
 
         @Test
         public void testObservable() {
-
             Observable<String> fWorld = new CommandHelloWorld("World").observe();
             Observable<String> fBob = new CommandHelloWorld("Bob").observe();
 
-            // blocking
-            assertEquals("Hello World!", fWorld.toBlocking().single());
-            assertEquals("Hello Bob!", fBob.toBlocking().single());
+            System.out.println("do toObservable ");
 
-            // non-blocking 
-            // - this is a verbose anonymous inner-class approach and doesn't do assertions
-            fWorld.subscribe(new Observer<String>() {
-
-                @Override
-                public void onCompleted() {
-                    // nothing needed here
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    e.printStackTrace();
-                }
-
-                @Override
-                public void onNext(String v) {
-                    System.out.println("onNext: " + v);
-                }
-
-            });
-
-            // non-blocking
-            // - also verbose anonymous inner-class
-            // - ignore errors and onCompleted signal
             fBob.subscribe(v -> System.out.println("onNext: " + v));
-
-            // non-blocking
-            // - using closures in Java 8 would look like this:
-
-            //            fWorld.subscribe((v) -> {
-            //                System.out.println("onNext: " + v);
-            //            })
-
-            // - or while also including error handling
-
-            //            fWorld.subscribe((v) -> {
-            //                System.out.println("onNext: " + v);
-            //            }, (exception) -> {
-            //                exception.printStackTrace();
-            //            })
-
-            // More information about Observable can be found at https://github.com/Netflix/RxJava/wiki/How-To-Use
-
+            fWorld.subscribe(v -> System.out.println("onNext: " + v));
         }
     }
-
 }
