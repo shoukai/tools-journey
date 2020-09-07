@@ -40,6 +40,7 @@
         <module>apache-commons-samples</module>
         <module>rsocket-sample</module>
         <module>caffeine-sample</module>
+        <module>activiti-samples</module>
     </modules>
 
     <dependencies>
