@@ -13,5 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>activiti-demo</module>
+        <module>activiti-api-basic-process-example</module>
     </modules>
 </project>
