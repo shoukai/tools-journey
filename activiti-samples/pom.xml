@@ -14,5 +14,6 @@
     <modules>
         <module>activiti-demo</module>
         <module>activiti-api-basic-process-example</module>
+        <module>activiti-api-basic-task-example</module>
     </modules>
 </project>
