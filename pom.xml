@@ -41,6 +41,7 @@
         <module>rsocket-sample</module>
         <module>caffeine-sample</module>
         <module>activiti-samples</module>
+        <module>spring-data-domain-event</module>
     </modules>
 
     <dependencies>
