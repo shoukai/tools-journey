@@ -24,7 +24,7 @@
         <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
         <jaxb.version>2.2.3</jaxb.version>
         <jetty-maven-plugin.version>9.4.8.v20171121</jetty-maven-plugin.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <log4j.version>2.10.0</log4j.version>
         <mojarra.version>2.2.16</mojarra.version>
         <myfaces.version>2.2.12</myfaces.version>
