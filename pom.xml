@@ -10,38 +10,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>netty-sample</module>
-        <module>rx-sample</module>
-        <module>webflux-sample</module>
-        <module>okhttp3-sample</module>
-        <module>graphql-sample</module>
-        <module>restql-sample</module>
-        <module>blade-sample</module>
-        <module>hystrix-sample</module>
-        <module>spring-data-sample</module>
-        <module>vertx-sample</module>
-        <module>spring-data-solr-sample</module>
-        <module>spring-statemachine-sample</module>
-        <module>netty-socketio-sample</module>
-        <module>fluency-sample</module>
-        <module>jexl-sample</module>
-        <module>javassist-sample</module>
-        <module>akka-samples</module>
-        <module>reactor-sample</module>
-        <module>drools-samples</module>
-        <module>unirest-java-sample</module>
-        <module>jsonrpc4j-sample</module>
-        <module>dozer-sample</module>
-        <module>redis-mock-sample</module>
-        <module>hutool-sample</module>
-        <module>guava-sample</module>
-        <module>siddhi-sample</module>
-        <module>spring-webflow-samples</module>
-        <module>apache-commons-samples</module>
-        <module>rsocket-sample</module>
-        <module>caffeine-sample</module>
-        <module>activiti-samples</module>
-        <module>spring-data-domain-event</module>
+        <module>uncategorized-tools</module>
     </modules>
 
     <dependencies>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>tools-journey</artifactId>
+        <groupId>org.apframework</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <artifactId>uncategorized-tools</artifactId>
+
+    <modules>
+        <module>netty-sample</module>
+        <module>rx-sample</module>
+        <module>webflux-sample</module>
+        <module>okhttp3-sample</module>
+        <module>graphql-sample</module>
+        <module>restql-sample</module>
+        <module>blade-sample</module>
+        <module>hystrix-sample</module>
+        <module>spring-data-sample</module>
+        <module>vertx-sample</module>
+        <module>spring-data-solr-sample</module>
+        <module>spring-statemachine-sample</module>
+        <module>netty-socketio-sample</module>
+        <module>fluency-sample</module>
+        <module>jexl-sample</module>
+        <module>javassist-sample</module>
+        <module>akka-samples</module>
+        <module>reactor-sample</module>
+        <module>drools-samples</module>
+        <module>unirest-java-sample</module>
+        <module>jsonrpc4j-sample</module>
+        <module>dozer-sample</module>
+        <module>redis-mock-sample</module>
+        <module>hutool-sample</module>
+        <module>guava-sample</module>
+        <module>siddhi-sample</module>
+        <module>spring-webflow-samples</module>
+        <module>apache-commons-samples</module>
+        <module>rsocket-sample</module>
+        <module>caffeine-sample</module>
+        <module>activiti-samples</module>
+        <module>spring-data-domain-event</module>
+    </modules>
+
+</project>
