@@ -42,12 +42,14 @@ public class SqlReplaceColumnValues {
         return stmtDeparser.getBuffer().toString();
     }
 
+    // This is a more general approach for replacing string and long values in all kinds of statements.
     public static void main(String[] args) throws JSQLParserException {
         System.out.println(cleanStatement("SELECT 'abc', 5 FROM mytable WHERE col='test'"));
         System.out.println(cleanStatement("UPDATE table1 A SET A.columna = 'XXX' WHERE A.cod_table = 'YYY'"));
         System.out.println(cleanStatement("INSERT INTO example (num, name, address, tel) VALUES (1, 'name', 'test ', '1234-1234')"));
         System.out.println(cleanStatement("DELETE FROM table1 where col=5 and col2=4"));
 
+        // it outputs:
         /*
          * SELECT ?, ? FROM mytable WHERE col = ?
          * UPDATE table1 A SET A.columna = ? WHERE A.cod_table = ?

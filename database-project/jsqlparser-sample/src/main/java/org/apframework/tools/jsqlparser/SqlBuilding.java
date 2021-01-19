@@ -16,7 +16,6 @@ import net.sf.jsqlparser.statement.select.SubSelect;
 import net.sf.jsqlparser.util.SelectUtils;
 import net.sf.jsqlparser.util.deparser.ExpressionDeParser;
 import net.sf.jsqlparser.util.deparser.SelectDeParser;
-import sun.dc.pr.PRError;
 
 /**
  * https://github.com/JSQLParser/JSqlParser/wiki/Examples-of-SQL-building
