@@ -1,4 +1,4 @@
-package org.apframework.tools.jsqlparser;
+package org.apframework.tools.jsqlparser.parsing;
 
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.expression.Expression;
