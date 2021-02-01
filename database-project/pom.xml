@@ -14,5 +14,6 @@
 
     <modules>
         <module>jsqlparser-sample</module>
+        <module>antlr-sample</module>
     </modules>
 </project>
