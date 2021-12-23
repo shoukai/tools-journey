@@ -12,6 +12,7 @@
     <modules>
         <module>database-project</module>
         <module>uncategorized-tools</module>
+        <module>drools-samples</module>
     </modules>
 
     <dependencies>

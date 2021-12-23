@@ -9,6 +9,8 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.apframework.tools.antlr.logs.BizLogListener;
 import org.apframework.tools.antlr.logs.model.LogEntry;
 import org.apframework.tools.antlr.logs.model.LogLevel;
+import org.apframework.tools.antlr.LogLexer;
+import org.apframework.tools.antlr.LogParser;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
