@@ -6,8 +6,6 @@ about drools examples, spring boot drools examples
 
 - [spring-boot-drools](https://github.com/ityouknow/drools-examples/tree/master/spring-boot-drools)：drools集成spring boot
 
-> drools 在国内的资料偏少，而且有很多的坑，共享出来希望可以帮到和我一样的人，少走一些弯路。
-
 ## spring-boot-drools 测试
 
 ```
