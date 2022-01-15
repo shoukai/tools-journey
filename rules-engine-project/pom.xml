@@ -9,13 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jsqlparser-sample</artifactId>
+    <artifactId>rules-engine-project</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>json-path-sample</module>
+    </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.github.jsqlparser</groupId>
-            <artifactId>jsqlparser</artifactId>
-            <version>4.3</version>
-        </dependency>
-    </dependencies>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
 </project>
